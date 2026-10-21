@@ -142,3 +142,17 @@
   .kicker,.topic-domain{font-size:12px}
   .topic-card h3{font-size:20px}
 }
+
+/* v32: Scientific Topics statement matches the visual prominence of section 01.
+   Single line on wide screens; readable wrapping on narrow screens. */
+.section-heading .topic-statement{
+  margin:0; color:var(--dark); font-family:"Noto Sans JP",sans-serif;
+  font-size:clamp(20px,2.35vw,29px);font-weight:700;
+  line-height:1.55;letter-spacing:0;white-space:normal;
+}
+.section-heading .topic-statement-en{
+  font-family:"DM Sans",sans-serif;font-size:clamp(20px,2.05vw,25px);
+}
+@media(min-width:1150px){
+  .section-heading .topic-statement{white-space:nowrap}
+}
