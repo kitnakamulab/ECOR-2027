@@ -14,3 +14,22 @@
     }
   });
 })();
+
+// v48: accessible dropdown behavior
+(() => {
+  const dropdowns = [...document.querySelectorAll('.nav-dropdown')];
+  document.addEventListener('click', (event) => {
+    for (const dropdown of dropdowns) {
+      if (!dropdown.contains(event.target)) dropdown.open = false;
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') for (const dropdown of dropdowns) dropdown.open = false;
+  });
+  for (const dropdown of dropdowns) {
+    dropdown.addEventListener('toggle', () => {
+      if (dropdown.open) for (const d of dropdowns) if (d !== dropdown) d.open = false;
+    });
+    dropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', () => dropdown.open = false));
+  }
+})();
